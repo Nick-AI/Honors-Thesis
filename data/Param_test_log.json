@@ -1,0 +1,16 @@
+{
+    "Accuracy": 0.5288461538461539,
+    "Batch_Size": 256,
+    "Depth": 10,
+    "Dropout_Rate": 0,
+    "Filters": 6,
+    "Growth_Rate": 6,
+    "Learning_Rate": 0.1,
+    "Max_Df": 0.3,
+    "NGram_Range": [
+        1,
+        2
+    ],
+    "TfIDf_Dim": 2048,
+    "Used_NGrams": false
+}
