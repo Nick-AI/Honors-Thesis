@@ -29,7 +29,7 @@ class TfIDfClassifier:
 
     def __init__(self, dataset):
         self.dataset = dataset
-        self.vector_file = self.data_dir + "features_" + self.dataset + ".pkl"
+        self.VECTOR_FILE = self.DATA_DIR + "features_" + self.dataset + ".pkl"
 
     def create_vectors(self, train_data):
         """Creates tfidf matrix from training data
