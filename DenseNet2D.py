@@ -1,13 +1,15 @@
 from keras.models import Model
 from keras.layers.core import Dense, Dropout, Activation
-from keras.layers.convolutional import Conv2D
-from keras.layers.pooling import AveragePooling2D
-from keras.layers.pooling import GlobalAveragePooling2D
+from keras.layers.convolutional import Conv1D, Conv2D
+from keras.layers.pooling import AveragePooling1D, AveragePooling2D
+from keras.layers.pooling import GlobalAveragePooling1D, GlobalAveragePooling2D
 from keras.layers import Input, Concatenate
 from keras.layers.normalization import BatchNormalization
 from keras.regularizers import l2
 import keras.backend as K
 
+
+#Shape img_dim = (number of vectors, dimensions of each vector)
 
 def conv_factory(x, nb_filter, img_dim, dropout_rate=None, weight_decay=1E-4):
     """Apply BatchNorm, Relu 3x3Conv2D, optional dropout
@@ -168,10 +170,6 @@ def DenseNet(nb_classes, img_dim, depth, nb_dense_block, growth_rate,
                            beta_regularizer=l2(weight_decay))(x)
     x = Activation('relu')(x)
     x = GlobalAveragePooling2D()(x)
-    x = Dense(units=1000,
-              activation='relu',
-              kernel_regularizer=l2(weight_decay),
-              bias_regularizer=l2(weight_decay))(x)
     x = Dense(nb_classes,
               activation='softmax',
               kernel_regularizer=l2(weight_decay),

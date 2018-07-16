@@ -48,7 +48,7 @@ def transition(x, nb_filter, img_dim, dropout_rate=None, weight_decay=1E-4):
                            gamma_regularizer=l2(weight_decay),
                            beta_regularizer=l2(weight_decay))(x)
     x = Activation('relu')(x)
-    x = Conv1D(nb_filter, int(img_dim/4),
+    x = Conv1D(nb_filter, 1,
                kernel_initializer="he_uniform",
                padding="same",
                use_bias=False,
@@ -168,10 +168,6 @@ def DenseNet(nb_classes, img_dim, depth, nb_dense_block, growth_rate,
                            beta_regularizer=l2(weight_decay))(x)
     x = Activation('relu')(x)
     x = GlobalAveragePooling1D()(x)
-    x = Dense(units=1000,
-              activation='relu',
-              kernel_regularizer=l2(weight_decay),
-              bias_regularizer=l2(weight_decay))(x)
     x = Dense(nb_classes,
               activation='softmax',
               kernel_regularizer=l2(weight_decay),
